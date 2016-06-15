@@ -102,12 +102,7 @@ public class SampleDataProvider extends DataProvider {
 
     @Override
     public User getUser(Context context) {
-        User dummyUser = new User();
-        dummyUser.setName("Dummy Boy");
-        dummyUser.setEmail("dummy@dyummy.com");
-        dummyUser.setBirthDate("22/10/1974");
-
-        return dummyUser;
+        return UserDataManager.getInstance().getCurrentUser();
     }
 
     @Override
@@ -121,7 +116,7 @@ public class SampleDataProvider extends DataProvider {
 
     @Override
     public String getUserEmail(Context context) {
-        return "dummy@dyummy.com";
+        return UserDataManager.getInstance().getCurrentUser().getEmail();
     }
 
     @Override
@@ -143,55 +138,65 @@ public class SampleDataProvider extends DataProvider {
 
             String resultstaskid = null;
 
-            if (task.taskClassName != null && task.taskClassName.equalsIgnoreCase("APCGenericSurveyTaskViewController")) {
+            if (task.taskClassName != null && task.taskClassName.equalsIgnoreCase("SmartSurveyTask")) {
                 TaskModel taskModel = ResourceManager.getInstance().getTask(task.taskFileName).create(context);
                 resultstaskid = taskModel.identifier;
+            } else if (task.taskClassName != null && task.taskClassName.equalsIgnoreCase("InterventionTask")) {
+                //InterventionTask interventionTask = ResourceManager.getInstance().getTask(task.taskFileName).create(context);
+                schedules.add(schedule);
+
+            } else if (task.taskClassName != null && task.taskClassName.equalsIgnoreCase("OrderedTask")) {
+
             } else resultstaskid = task.taskID;
 
             if (resultstaskid != null) {
                 TaskResult result = db.loadLatestTaskResult(resultstaskid);
 
-                if (result == null) {
+                 if (schedule.scheduleType.equalsIgnoreCase("DistressBased")) {
+                    if (Integer.parseInt(schedule.scheduleString) <= UserDataManager.getInstance().getCurrentUser().getDistressStreak()) {
+                        schedules.add(schedule);
+                    }
+                } else if (result == null) {
                     schedules.add(schedule);
                 } else if (StringUtils.isNotEmpty(schedule.scheduleString)) {
-                    Date date = ScheduleHelper.nextSchedule(schedule.scheduleString, result.getEndDate());
-                    if (date.before(new Date())) {
-                        schedules.add(schedule);
+                        Date date = ScheduleHelper.nextSchedule(schedule.scheduleString, result.getEndDate());
+                        if (date.before(new Date())) {
+                            schedules.add(schedule);
+                        }
                     }
                 }
             }
+
+            schedulesAndTasksModel.schedules = schedules;
+            return schedulesAndTasksModel;
         }
 
-        schedulesAndTasksModel.schedules = schedules;
-        return schedulesAndTasksModel;
+
+        @Override
+        public Task loadTask (Context context, SchedulesAndTasksModel.TaskScheduleModel task){
+        if(task.taskClassName.equalsIgnoreCase("SmartSurveyTask")){
+            TaskModel taskModel = ResourceManager.getInstance().getTask(task.taskFileName).create(context);
+            SmartSurveyTask smartSurveyTask = new SmartSurveyTask(context, taskModel);
+            return smartSurveyTask;
+        } else if (task.taskClassName.equalsIgnoreCase("InterventionTask")) {
+            TaskModel interventionTaskModel = ResourceManager.getInstance().getTask(task.taskFileName).create(context);
+            return new InterventionTask(context, interventionTaskModel);
+        } else {
+            LogExt.e(SampleDataProvider.class, "Task with classname "+task.taskClassName+"cannot be found");
+            return null;
+        }
+        }
+
+
+        @Override
+        public void processInitialTaskResult (Context context, TaskResult taskResult){
+
+        }
+
+        @Override
+        public Observable<DataResponse> forgotPassword (Context context, String email){
+            LogExt.i(SampleDataProvider.class, "Forgot password");
+            return obs;
+        }
+
     }
-
-
-    @Override
-    public Task loadTask(Context context, SchedulesAndTasksModel.TaskScheduleModel task) {
-        return TaskProvider.getInstance().get(task.taskID);
-//        if(task.taskClassName.equalsIgnoreCase("APCGenericSurveyTaskViewController")){
-//            TaskModel taskModel = ResourceManager.getInstance().getTask(task.taskFileName).create(context);
-//            SmartSurveyTask smartSurveyTask = new SmartSurveyTask(context, taskModel);
-//            return smartSurveyTask;
-//        } else if(task.taskClassName.equalsIgnoreCase(YOUR CUSTOM TASK)){
-//            return new YOUR CUSTOM TASK IMPLEMENTATION;
-//        } else{
-//            LogExt.e(SampleDataProvider.class, "Task with classname "+task.taskClassName+"cannot be found");
-//            return null;
-//        }
-    }
-
-
-    @Override
-    public void processInitialTaskResult(Context context, TaskResult taskResult) {
-
-    }
-
-    @Override
-    public Observable<DataResponse> forgotPassword(Context context, String email) {
-        LogExt.i(SampleDataProvider.class, "Forgot password");
-        return obs;
-    }
-
-}

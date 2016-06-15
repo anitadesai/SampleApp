@@ -71,6 +71,9 @@ public class SampleResearchStack extends ResearchStack
     @Override
     protected DataProvider createDataProviderImplementation(Context context)
     {
+        // Can this go somewhere better?
+        UserDataManager userManager = new UserDataManager();
+        userManager.init();
         return new SampleDataProvider();
     }
 

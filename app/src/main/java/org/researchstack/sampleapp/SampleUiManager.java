@@ -89,7 +89,7 @@ public class SampleUiManager extends UiManager
                 booleanAnswerFormat);
 
         QuestionStep diagnosisStep = new QuestionStep("signupInclusionDiagnosisStep",
-                "Have you been diagnosed with pre-diabetes or diabetes?",
+                "Have you been diagnosed with cancer?",
                 booleanAnswerFormat);
 
         QuestionStep englishStep = new QuestionStep("signupInclusionEnglishStep",

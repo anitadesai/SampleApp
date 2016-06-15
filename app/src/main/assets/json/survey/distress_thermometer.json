@@ -1,0 +1,289 @@
+{
+  "identifier": "DistressThermometer",
+  "type": "Survey",
+  "name": "DistressThermometer",
+  "elements": [
+    {
+    "identifier": "distress_level",
+    "prompt": "On a scale of 0 to 10, from \"no distress\" to \"extreme distress\", what number best describes how much distress you have been experiencing in the past week?",
+    "uiHint": "numberfield",
+    "guid": "21987ad2-4846-48a4-ba80-27b3371186c0",
+    "type": "SurveyQuestion",
+    "constraints": {
+      "dataType": "integer",
+      "type": "IntegerConstraints",
+      "step": null,
+      "maxValue": 10,
+      "minValue": 0
+    }
+  }/*,
+    {
+      "identifier": "practical_problems",
+      "prompt": "I have had problems with the following practical problems in the past week: (select all that apply)",
+      "uiHint": "MultiValueConstraints",
+      "guid": "854fff00-3d2e-41c2-9a36-17b72887819a",
+      "type": "SurveyQuestion",
+      "constraints": {
+        "dataType": "integer",
+        "allowMultiple": true,
+        "allowOther": true,
+        "type": "MultiValueConstraints",
+        "enumeration": [
+          {
+            "type": "SurveyQuestionOption",
+            "value": 1,
+            "label": "Child Care"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 2,
+            "label": "Housing"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 3,
+            "label": "Insurance/financial"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 4,
+            "label": "Transportation"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 5,
+            "label": "Work/school"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 6,
+            "label": "None of the above"
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "Family Problems",
+      "prompt": "I have had problems with the following family problems in the past week: (select all that apply)",
+      "uiHint": "MultiValueConstraints",
+      "guid": "854cff00-3b2f-41c2-9b88-17b72287819a",
+      "type": "SurveyQuestion",
+      "constraints": {
+        "dataType": "integer",
+        "allowMultiple": true,
+        "allowOther": true,
+        "type": "MultiValueConstraints",
+        "enumeration": [
+          {
+            "type": "SurveyQuestionOption",
+            "value": 1,
+            "label": "Dealing with children"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 2,
+            "label": "Dealing with partner"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 3,
+            "label": "Dealing with close friend/relative"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 4,
+            "label": "None of the above"
+          }
+          ]
+      }
+    },
+    {
+      "identifier": "emotional_problems",
+      "prompt": "I have had problems with the following emotional problems in the past week: (select all that apply)",
+      "uiHint": "MultiValueConstraints",
+      "guid": "A7B9A2EB-2BBB-449A-BF33-432C5CA70C3D",
+      "type": "SurveyQuestion",
+      "constraints": {
+        "dataType": "integer",
+        "allowMultiple": true,
+        "allowOther": true,
+        "type": "MultiValueConstraints",
+        "enumeration": [
+          {
+            "type": "SurveyQuestionOption",
+            "value": 1,
+            "label": "Depression"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 2,
+            "label": "Fears"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 3,
+            "label": "Nervousness"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 4,
+            "label": "Sadness"
+          },{
+            "type": "SurveyQuestionOption",
+            "value": 5,
+            "label": "Worry"
+          },{
+            "type": "SurveyQuestionOption",
+            "value": 6,
+            "label": "Loss of interest in usual activities"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 7,
+            "label": "Spiritual or religious concerns"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 8,
+            "label": "None of the above"
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "physical_problems",
+      "prompt": "I have had problems with the following physical problems in the past week: (select all that apply)",
+      "uiHint": "checkbox",
+      "guid": "854cff00-3c2f-41c2-9b76-17b72287619b",
+      "type": "SurveyQuestion",
+      "constraints": {
+        "dataType": "integer",
+        "allowMultiple": true,
+        "allowOther": true,
+        "type": "MultiValueConstraints",
+        "enumeration": [
+          {
+            "type": "SurveyQuestionOption",
+            "value": 1,
+            "label": "Appearance"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 2,
+            "label": "Bathing or dressing"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 3,
+            "label": "Breathing"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 4,
+            "label": "Changes in urination"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 5,
+            "label": "Constipation"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 6,
+            "label": "Diarrhoea"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 7,
+            "label": "Eating"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 8,
+            "label": "Fatigue"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 9,
+            "label": "Feeling swollen"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 10,
+            "label": "Fever"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 11,
+            "label": "Getting around"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 12,
+            "label": "Indigestion"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 13,
+            "label": "Memory or concentration"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 14,
+            "label": "Mouth sores"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 15,
+            "label": "Nausea"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 16,
+            "label": "Dry or congested nose"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 17,
+            "label": "Pain"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 18,
+            "label": "Sexual"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 19,
+            "label": "Itchy or dry skin"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 20,
+            "label": "Sleep"
+          },
+          {
+            "type": "SurveyQuestionOption",
+            "value": 21,
+            "label": "Tingling in hands or feet"
+          },{
+            "type": "SurveyQuestionOption",
+            "value": 22,
+            "label": "None of the above"
+          }
+          ]
+      }
+    },
+    {
+      "identifier": "other",
+      "prompt": "Did you have any other problems in the past week?",
+      "uiHint": "checkbox",
+      "guid": "2439ED57-4473-4BF4-B5BB-FDEB6219299D",
+      "type": "SurveyQuestion",
+      "constraints": {
+        "dataType": "boolean",
+        "type": "BooleanConstraints"
+      }
+    }*/
+  ]
+}

@@ -8,12 +8,12 @@
           "taskTitle": "About You",
           "taskID": "AboutYou-27829fa5-d731-4372-ba30-a5859f688297",
           "taskFileName": "about_you",
-          "taskClassName": "APHDailyTaskViewController",
+          "taskClassName": "SmartSurveyTask",
           "taskCompletionTimeString": "8 Questions"
         }
       ]
     },
-    {
+    /*{
       "scheduleType": "recurring",
       "scheduleString": "* * * * *",
       "tasks": [
@@ -21,11 +21,12 @@
           "taskTitle": "Test Survey",
           "taskID": "1c5ee4e2-baab-47db-b515-2fbe9fdf50a6",
           "taskFileName": "practice_survey",
+          "taskClassName": "SmartSurveyTask",
           "taskCompletionTimeString": "4 Questions"
         }
       ]
-    },
-    {
+    },*/
+    /*{
       "scheduleType": "recurring",
       "scheduleString": "0 5 * * *",
       "tasks": [
@@ -37,7 +38,7 @@
           "taskCompletionTimeString": "8 Questions"
         }
       ]
-    },
+    },*/
     {
       "scheduleType": "recurring",
       "scheduleString": "0 5 * * 6",
@@ -46,7 +47,7 @@
           "taskTitle": "Weekly Survey",
           "taskID": "WeeklySurvey-b573a78-8917-4582-8f1f-0552d0bfd28a",
           "taskFileName": "asthma_weekly",
-          "taskClassName": "APHWeeklyTaskViewController",
+          "taskClassName": "SmartSurveyTask",
           "taskCompletionTimeString": "16 Questions"
         }
       ]
@@ -59,12 +60,12 @@
           "taskTitle": "Medical History",
           "taskID": "MedicalHistory-b3cd0d66-b943-11e4-a71e-12e3f512a338",
           "taskFileName": "medical_history",
-          "taskClassName": "APCGenericSurveyTaskViewController",
+          "taskClassName": "SmartSurveyTask",
           "taskCompletionTimeString": "17 Questions"
         }
       ]
     },
-    {
+    /*{
       "scheduleType": "once",
       "tasks": [
         {
@@ -75,8 +76,22 @@
           "taskCompletionTimeString": "19 Questions"
         }
       ]
-    },
+    },*/
     {
+      "scheduleType": "recurring",
+      "scheduleString": "* * * * *",
+      "delay": "P2D",
+      "tasks": [
+        {
+          "taskTitle": "Distress Thermometer",
+          "taskID": "DistressThermometer-cc06cd68-b943-11e4-a71e-12e3f512a338",
+          "taskFileName": "distress_thermometer",
+          "taskClassName": "SmartSurveyTask",
+          "taskCompletionTimeString": "1 Question"
+        }
+      ]
+    },
+    /*{
       "scheduleType": "once",
       "delay": "P2D",
       "tasks": [
@@ -88,8 +103,8 @@
           "taskCompletionTimeString": "9 Questions"
         }
       ]
-    },
-    {
+    },*/
+    /*{
       "scheduleType": "once",
       "tasks": [
         {
@@ -100,9 +115,10 @@
           "taskCompletionTimeString": "13 Questions"
         }
       ]
-    },
+    },*/
     {
-      "scheduleType": "once",
+      "scheduleType": "DistressBased",
+      "scheduleString": "1",
       "tasks": [
         {
           "taskTitle": "Enrollment for Recontact",
